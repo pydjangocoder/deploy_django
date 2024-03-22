@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container mt-3">
+    <div class="d-flex justify-content-between">
+        <div class="col-3">
+            <div class="list-group shadow mb-3">
+                {% for category in categories %}
+                <a href="#"
+                   class="list-group-item list-group-item-action">
+                    <b>{{ category.title }}</b>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div class="list-group shadow mb-3">
+                {% for difficulty in difficulties %}
+                <a href="#"
+                   class="list-group-item list-group-item-action">
+                    <b>{{ difficulty.title }}</b>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div class="list-group shadow mb-3">
+                {% for cuisine in cuisines %}
+                <a href="#"
+                   class="list-group-item list-group-item-action">
+                    <b>{{ cuisine.title }}</b>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-8">
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for recipe in recipes %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between">
+                                <b>{{ recipe.category }}</b>
+                                <b>{{ recipe.cuisine }}</b>
+                                <b>{{ recipe.difficulty }}</b>
+                            </div>
+                        </div>
+                        <a href="">
+                            <img src="{{ recipe.image.url }}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ recipe.title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ recipe.description|truncatewords:20 }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock main %}
